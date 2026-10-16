@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layered Box Model</title>
+
+<style>
+    .outer {
+        border: 10px solid black;
+        padding: 30px;
+        background-color: lightblue;
+    }
+
+    .middle {
+        border: 6px solid blue;
+        padding: 20px;
+        margin: 10px;
+        background-color: lightyellow;
+    }
+
+    .inner {
+        border: 3px solid red;
+        padding: 20px;
+        margin: 10px;
+        background-color: lightgreen;
+        text-align: center;
+    }
+</style>
+
+
+</head>
+<body>
+<div class="outer">
+    <h2>Outer Container Box</h2>
+
+    <div class="middle">
+        <h3>Middle Box</h3>
+
+        <div class="inner">
+            <p>Inner Box</p>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
