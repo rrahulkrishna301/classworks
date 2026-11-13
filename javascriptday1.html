@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Store Sales Tracker</title>
+</head>
+<body>
+  <h1>Online Store Sales Tracker</h1>
+ 
+
+  <script>
+    // Number of items sold
+    let tshirtQty = 5;
+    let capQty = 3;
+
+    // Prices (in rs)
+    let tshirtPrice = 400;
+    let capPrice = 150;
+
+    // Total earnings
+    let totalEarnings = (tshirtQty * tshirtPrice) + (capQty * capPrice);
+    console.log("Total earnings = Rs " + totalEarnings);   
+
+    // Change in the t-shirt price and recalculation
+    tshirtPrice = 450;
+    totalEarnings = (tshirtQty * tshirtPrice) + (capQty * capPrice);
+    console.log("Updated total earnings = Rs " + totalEarnings);  
+  </script>
+</body>
+</html>
