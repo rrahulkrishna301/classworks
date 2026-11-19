@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stats Widget</title>
+</head>
+<body>
+  <div id="widget">
+    <h2>Statistics Widget</h2>
+    <p id="random"></p>
+    <p id="score"></p>
+    <p id="diff"></p>
+    <p id="sqrt"></p>
+    <p id="pi"></p>
+    <p id="implicit"></p>
+  </div>
+
+  <script>
+    // 1. Random whole number between 1 and 100
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    // 2. Simulated user score as a string
+    const userScoreStr = "75";
+
+    // 3. Explicit type conversion (no conditionals)
+    const userScore = Number(userScoreStr);
+
+    // 4. Difference between random number and user score
+    const difference = randomNumber - userScore;
+
+    // 5. Rounded square root of the user score
+    const roundedSqrt = Math.round(Math.sqrt(userScore));
+
+    // 6. Pi constant
+    const pi = Math.PI;
+
+    // 7. Implicit conversion: "50" * 2
+    const implicitResult = "50" * 2;
+
+    // Console output
+    console.log("Random number:", randomNumber);
+    console.log("User score (as number):", userScore, "| type:", typeof userScore);
+    console.log("Difference (random - score):", difference);
+    console.log("Rounded square root of score:", roundedSqrt);
+    console.log("Pi:", pi);
+    console.log('"50" * 2 =', implicitResult);
+
+    // Page output using innerHTML
+    document.getElementById("random").innerHTML = "Random number: " + randomNumber;
+    document.getElementById("score").innerHTML = "User score (as number): " + userScore + " (type: " + typeof userScore + ")";
+    document.getElementById("diff").innerHTML = "Difference (random - score): " + difference;
+    document.getElementById("sqrt").innerHTML = "Rounded square root of score: " + roundedSqrt;
+    document.getElementById("pi").innerHTML = "Pi: " + pi;
+    document.getElementById("implicit").innerHTML = "\"50\" * 2 = " + implicitResult;
+  </script>
+</body>
+</html>
