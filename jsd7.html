@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Birthday Tracker 🎂</title>
+  <style>
+    body { font-family: system-ui, sans-serif; text-align: center; padding: 2rem; }
+    #output { font-size: 1.3rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>🎂 Birthday Tracker 🎉</h1>
+  <p id="output"></p>
+
+  <script>
+    const friend = {
+      name: "John",
+      birthDate: "1999-07-05" // YYYY-MM-DD
+    };
+
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    function getBirthdayDetails(friend) {
+      // Convert the string into a Date (UTC getters avoid timezone shifts)
+      const birth = new Date(friend.birthDate);
+      const year = birth.getUTCFullYear();
+      const month = monthNames[birth.getUTCMonth()];
+      const day = birth.getUTCDate();
+
+      // Calculate age as of today
+      const today = new Date();
+      let age = today.getFullYear() - year;
+      const hadBirthdayThisYear =
+        today.getMonth() > birth.getUTCMonth() ||
+        (today.getMonth() === birth.getUTCMonth() && today.getDate() >= day);
+      if (!hadBirthdayThisYear) age--;
+
+      const message = `${friend.name} was born on ${day} ${month}, ${year} and is ${age} years old.`;
+
+      console.log(message);                                    // console
+      document.getElementById("output").textContent = message; // screen
+    }
+
+    getBirthdayDetails(friend);
+  </script>
+</body>
+</html>
