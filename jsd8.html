@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grocery Store Calculator</title>
+</head>
+<body>
+  <h2>Grocery Store Calculator</h2>
+  <div id="output"></div>
+
+  <script>
+    var output = document.getElementById("output");
+    var purchases = 0;
+
+    while (purchases < 5) {
+      var code = parseInt(prompt("Enter product code (1 = Apple, 2 = Banana, 3 = Mango):"));
+      var quantity = parseInt(prompt("Enter quantity:"));
+
+      var name = "";
+      var price = 0;
+
+      switch (code) {
+        case 1:
+          name = "Apple";
+          price = 30;
+          break;
+        case 2:
+          name = "Banana";
+          price = 10;
+          break;
+        case 3:
+          name = "Mango";
+          price = 50;
+          break;
+        default:
+          output.innerHTML += "<p style='color:red;'>Invalid product code. Skipped.</p>";
+          continue; // skip this iteration (not counted as a purchase)
+      }
+
+      var total = price * quantity;
+
+      var message;
+      if (total > 100) {
+        message = "High purchase";
+      } else {
+        message = "Normal purchase";
+      }
+
+      purchases++;
+
+      output.innerHTML += "<p><b>Purchase " + purchases + ":</b> " + name +
+        " x " + quantity + " = ₹" + total + " &rarr; " + message + "</p>";
+    }
+  </script>
+</body>
+</html>
