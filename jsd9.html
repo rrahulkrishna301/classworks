@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment Sanitizer</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    textarea { width: 100%; height: 100px; padding: 8px; box-sizing: border-box; }
+    button { margin-top: 8px; padding: 8px 16px; cursor: pointer; }
+    #result { margin-top: 1rem; padding: 12px; background: #f3f3f3; border-radius: 6px; display: none; }
+    .found { color: #b00020; font-weight: bold; }
+    .clean { color: #1b7f3b; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Comment Box</h2>
+
+  <textarea id="comment">My son is 12 years old. Our flat number is 45 and contact is 9876543210.</textarea>
+  <br>
+  <button id="submitBtn">Submit Comment</button>
+
+  <div id="result">
+    <p>Number found: <span id="found"></span></p>
+    <p>Updated comment:</p>
+    <p id="updated"></p>
+  </div>
+
+  <script>
+    function sanitizeComment(comment) {
+      const hasNumber = /\d/.test(comment);
+      const updatedComment = comment.replace(/\d+/gi, "NUMBER");
+      return { hasNumber, updatedComment };
+    }
+
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      const text = document.getElementById("comment").value;
+      const { hasNumber, updatedComment } = sanitizeComment(text);
+
+      const foundEl = document.getElementById("found");
+      foundEl.textContent = hasNumber;
+      foundEl.className = hasNumber ? "found" : "clean";
+
+      // textContent (not innerHTML) keeps user input safe from HTML injection
+      document.getElementById("updated").textContent = updatedComment;
+      document.getElementById("result").style.display = "block";
+
+      console.log({ hasNumber, updatedComment });
+    });
+  </script>
+</body>
+</html>
