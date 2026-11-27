@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON Message Handler</title>
+</head>
+<body>
+  <h1>Check the console (F12) 👀</h1>
+
+  <script>
+    // JSON text with user information
+    const jsonText = '{"name": "Alice", "email": "alice@example.com", "message": "Hello there!"}';
+
+    // Named arrow function
+    const printMessageReceived = (json) => {
+      try {
+        // Convert JSON text into a JavaScript object
+        const user = JSON.parse(json);
+        console.log(`Message received from ${user.name}`);
+      } catch (error) {
+        console.error("Error: Invalid JSON ->", error.message);
+      }
+    };
+
+    // Run the function
+    printMessageReceived(jsonText);
+
+    // Try it with broken JSON to see the error handling:
+    // printMessageReceived('{"name": "Alice", email: }');
+  </script>
+</body>
+</html>
